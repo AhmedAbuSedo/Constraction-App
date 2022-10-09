@@ -94,7 +94,7 @@ const Home = ({ navigation }) => {
   if (!loaded) return null;
   const ListItems = ({ item }) => {
     return (
-      <TouchableOpacity onPress={() => {}} style={styles.viewAll}>
+      <View style={styles.viewAll}>
         <View style={styles.viewList}>
           <SvgXml xml={item.img} />
         </View>
@@ -102,7 +102,7 @@ const Home = ({ navigation }) => {
         <Text style={{ fontSize: 11, fontFamily: "CairoSemiBold" }}>
           {item.extra}
         </Text>
-      </TouchableOpacity>
+      </View>
     );
   };
   return (
