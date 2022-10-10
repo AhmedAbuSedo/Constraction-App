@@ -11,27 +11,24 @@ import { SvgXml } from "react-native-svg";
 import icon from "../../utils/icons";
 import Styles from "./style";
 import Dot from "./Components/Dots";
-import styles from "../Home/style";
-import Home from "../Home";
+import { useNavigation } from "@react-navigation/native";
 
-const Onboarding = ({ navigation }) => {
-  const pressHandler = () => {
-    navigation.navigate("Home");
-  };
+const Onboarding = () => {
+  const { navigate } = useNavigation();
   const iconImg = [
     { key: 0, img: icon.Logo },
     { key: 1, img: icon.Logo2 },
     { key: 2, img: icon.Logo },
     { key: 3, img: icon.Logo2 },
   ];
-  const { height, width } = useWindowDimensions();
-  const [scrol, setScrol] = useState(0);
+  const { width } = useWindowDimensions();
+  const [activIndex, setActivIndex] = useState(0);
   const handleOnScroll = (event) => {
     // console.log(parseInt(event.nativeEvent.contentOffset.x));
     // console.log(parseInt(event.nativeEvent.contentOffset.x) == parseInt(width));
     const leftSpace = event.nativeEvent.contentOffset.x;
     const activIndex = Math.round(leftSpace / width);
-    setScrol(activIndex);
+    setActivIndex(activIndex);
   };
   return (
     <View style={Styles.cont}>
@@ -64,10 +61,10 @@ const Onboarding = ({ navigation }) => {
           return item.key;
         }}
         renderItem={({ item }) => {
-          return <Dot index={item.key} activIndex={scrol} />;
+          return <Dot index={item.key} activIndex={activIndex} />;
         }}
       />
-      <TouchableOpacity onPress={pressHandler} style={Styles.skip}>
+      <TouchableOpacity onPress={() => navigate("HomeTap")} style={Styles.skip}>
         <Text style={Styles.skipTxt}>Skip</Text>
       </TouchableOpacity>
     </View>

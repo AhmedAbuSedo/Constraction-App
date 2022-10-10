@@ -12,6 +12,8 @@ import icon from "../../utils/icons";
 import { SvgXml } from "react-native-svg";
 import { useFonts } from "expo-font";
 import styles from "./style";
+import { useNavigation } from "@react-navigation/native";
+
 const list = [
   {
     key: 0,
@@ -75,36 +77,32 @@ const list = [
     txt: "الجانب  \n الاجتماعي والوطني ",
   },
 ];
-const Home = ({ navigation }) => {
-  const pressHandlerHome = () => {
-    navigation.navigate("Home");
-  };
-  const pressHandlerAbout = () => {
-    navigation.navigate("About");
-    // navigation.push("About");
-  };
-  const pressHandlerContact = () => {
-    navigation.navigate("Contact");
-  };
+const ListItems = ({ item }) => {
+  const { navigate } = useNavigation();
+  return (
+    <TouchableOpacity
+      style={styles.viewAll}
+      onPress={() => navigate("Details", { item })}
+    >
+      <View style={styles.viewList}>
+        <SvgXml xml={item.img} />
+      </View>
+      <Text style={styles.innerTxt}>{item.txt}</Text>
+      <Text style={{ fontSize: 11, fontFamily: "CairoSemiBold" }}>
+        {item.extra}
+      </Text>
+    </TouchableOpacity>
+  );
+};
+
+const Home = () => {
   const { height, width } = useWindowDimensions();
   const [loaded] = useFonts({
     CairoBold: require("../../../assets/fonts/Cairo-Bold.ttf"),
     CairoSemiBold: require("../../../assets/fonts/Cairo-SemiBold.ttf"),
   });
   if (!loaded) return null;
-  const ListItems = ({ item }) => {
-    return (
-      <View style={styles.viewAll}>
-        <View style={styles.viewList}>
-          <SvgXml xml={item.img} />
-        </View>
-        <Text style={styles.innerTxt}>{item.txt}</Text>
-        <Text style={{ fontSize: 11, fontFamily: "CairoSemiBold" }}>
-          {item.extra}
-        </Text>
-      </View>
-    );
-  };
+
   return (
     <View style={[styles.container, { height: height, width: width }]}>
       <ImageBackground
@@ -113,10 +111,10 @@ const Home = ({ navigation }) => {
       >
         <Text style={styles.txt}>المقاولات</Text>
       </ImageBackground>
-      <View style={{ height: height * 0.83, top: 90 }}>
+      <View style={{ height: height * 0.87, top: 90 }}>
         <FlatList
           data={list}
-          contentContainerStyle={{ alignItems: "center", marginLeft: 0 }}
+          contentContainerStyle={{ alignItems: "center" }}
           showsVerticalScrollIndicator={false}
           numColumns={2}
           horizontal={false}
@@ -130,19 +128,6 @@ const Home = ({ navigation }) => {
           }
           renderItem={({ item }) => <ListItems item={item} />}
         />
-      </View>
-      <View style={{ justifyContent: "space-between", width: width }}>
-        <View style={styles.footer}>
-          <TouchableOpacity onPress={pressHandlerHome}>
-            <Image source={require("../../../assets/Group1087.png")} />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={pressHandlerAbout}>
-            <Image source={require("../../../assets/Group1086.png")} />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={pressHandlerContact}>
-            <Image source={require("../../../assets/Group1088.png")} />
-          </TouchableOpacity>
-        </View>
       </View>
     </View>
   );
