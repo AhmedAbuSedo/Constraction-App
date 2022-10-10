@@ -6,7 +6,7 @@ import About from "../About/index";
 import Contact from "../contact/index";
 
 import { Ionicons } from "@expo/vector-icons";
-import { MaterialIcons } from "@expo/vector-icons";
+
 const Tap = createBottomTabNavigator();
 
 const HomeTap = () => {
