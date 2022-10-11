@@ -11,6 +11,7 @@ import {
 import { useFonts } from "expo-font";
 import styles from "./style";
 import { Header } from "../Home/components/header";
+import info from "../../utils/info";
 
 const Contact = () => {
   const { height, width } = useWindowDimensions();
@@ -50,7 +51,7 @@ const Contact = () => {
             { fontFamily: "CairoRegular", textAlign: "right" },
           ]}
         >
-          infa@afaa8.com 0096652709005 العنوان : المملكة العربية السعودية
+          {info.Contacttxt}
         </Text>
       </View>
     </View>

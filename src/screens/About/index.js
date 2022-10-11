@@ -5,6 +5,7 @@ import { SvgXml } from "react-native-svg";
 import { useFonts } from "expo-font";
 import icon from "../../utils/icons";
 import Style from "./style";
+import info from "../../utils/info";
 
 const About = () => {
   const { height, width } = useWindowDimensions();
@@ -24,16 +25,7 @@ const About = () => {
 
       <View style={Style.innertxtView}>
         <Text style={[Style.abouttxtone, { fontFamily: "CairoRegular" }]}>
-          نقوم بتنفيذ جميع مقاولات واعمال البناء بجميع المراحل بداية من اعمال
-          الحفر للأساسات مرورا بجميع المراحل وحتى اعمال تركيب الكهرباء والسباكة
-          والنجارة واعمال السيراميك والرخام والواجهات والدهانات.
-          {"\n"}
-          نقدم مجموعة كبيرة ومتميزة من الافكار والتصميمات لتشطيب العقارات
-          والوحدات السكنية والشركات والهيئات والمؤسسات الحكومية وغيرها من
-          الوحدات وتركيب كافة الخدمات واعمال التشطيبات الكاملة.
-          {"\n"}
-          نقدم كافة الخدمات الخاصة بتصميم الديكورات وفق احدث الاساليب المتطورة
-          والاشكال العصرية.
+          {info.Abouttxt}
         </Text>
       </View>
     </View>
