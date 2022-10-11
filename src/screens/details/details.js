@@ -6,6 +6,7 @@ const Details = () => {
   const { item } = params;
   return (
     <View style={styles.container}>
+      <Text>This is Details Screen</Text>
       <Text style={styles.txt}>{item.txt}</Text>
     </View>
   );

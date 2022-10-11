@@ -64,7 +64,21 @@ const Onboarding = () => {
           return <Dot index={item.key} activIndex={activIndex} />;
         }}
       />
-      <TouchableOpacity onPress={() => navigate("HomeTap")} style={Styles.skip}>
+      <TouchableOpacity
+        onPress={() =>
+          navigate(
+            "HomeTap"
+            // , {
+            //   screen: "StackHome", //must been in HomeTap navigation
+            //   params: {
+            //     screen: "Details", //must been in StackHome navigation
+            //     params: { item: {} },
+            //   },
+            // }
+          )
+        }
+        style={Styles.skip}
+      >
         <Text style={Styles.skipTxt}>Skip</Text>
       </TouchableOpacity>
     </View>

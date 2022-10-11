@@ -2,8 +2,8 @@ import { View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import StackHome from "./StackHome";
-import About from "../About/index";
-import Contact from "../contact/index";
+import About from "../src/screens/About/index";
+import Contact from "../src/screens/Contact/index";
 
 import { Ionicons } from "@expo/vector-icons";
 

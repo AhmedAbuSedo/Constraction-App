@@ -8,10 +8,9 @@ import {
   Image,
   ImageBackground,
 } from "react-native";
-import icon from "../../utils/icons";
-import { SvgXml } from "react-native-svg";
 import { useFonts } from "expo-font";
 import styles from "./style";
+import { Header } from "../Home/components/header";
 
 const Contact = () => {
   const { height, width } = useWindowDimensions();
@@ -23,12 +22,7 @@ const Contact = () => {
 
   return (
     <View style={[styles.container, { width, height }]}>
-      <ImageBackground
-        style={[styles.backgroundImg, { width }]}
-        source={require("../../../assets/image.png")}
-      >
-        <Text style={styles.txt}>تواصل معنا</Text>
-      </ImageBackground>
+      <Header title={"تواصل معنا"} width={width} />
 
       <ImageBackground
         style={[styles.qr, { width: 256.37, height: 256.73, marginTop: 170 }]}

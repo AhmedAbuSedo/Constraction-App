@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Home from "./index";
-import Details from "../details/details";
+import Home from "../src/screens/Home/index";
+import Details from "../src/screens/Details/details";
 import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 const Stack = createNativeStackNavigator();
@@ -8,11 +8,11 @@ const Stack = createNativeStackNavigator();
 const StackHome = () => {
   const { navigate, goBack, canGoBack } = useNavigation();
   return (
-    <Stack.Navigator initialRouteName="Home">
+    <Stack.Navigator>
       <Stack.Screen
         name="Home"
         component={Home}
-        options={{ headerShown: false }}
+        options={{ headerShown: false, gestureEnabled: true }}
       />
       <Stack.Screen
         name="Details"
